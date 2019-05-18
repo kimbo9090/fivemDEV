@@ -19,6 +19,5 @@ RegisterCommand('ungod', function()
     TriggerEvent('chat:addMessage', {
 		args = { 'Modo DIOS desactivado' } -- Informamos de que el modo dios ha sido desactivado
     })
-    })
     SetPlayerInvincible(id,false) --Ponemos el estado de invencible en False
 end, false)
