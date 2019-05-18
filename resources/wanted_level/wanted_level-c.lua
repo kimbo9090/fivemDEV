@@ -13,4 +13,7 @@ RegisterCommand('wanted', function(source, args)
   local level = tonumber(args[1])
   SetPlayerWantedLevel(PlayerId(), level, false) 
   SetPlayerWantedLevelNow(PlayerId(), false)
+  TriggerEvent('chat:addMessage', {
+    args = { '^7 Wanted level set to: ^2'.. tostring(level) }
+  })
 end)
