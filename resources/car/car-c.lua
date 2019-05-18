@@ -92,3 +92,16 @@ RegisterCommand('car', function(source, args)
 		args = { '^3Spawning  ^8' .. vehicleName}
 	})
 end, false)
+
+-- TODO No funciona arreglarlo
+RegisterCommand('currentCar',function()
+    local ped = GetPlayerPed(0)
+    local veh = GetVehiclePedIsIn(ped, false)
+    local model = GetEntityModel(veh)
+    local displaytext = GetDisplayNameFromVehicleModel(model)
+    TriggerEvent('chat:addMessage', {
+		args = { 'Your car is ' .. veh}
+    })
+    SetVehicleForwardSpeed(veh,222222)
+    SetVehicleStrong(veh,true)
+end,false)
