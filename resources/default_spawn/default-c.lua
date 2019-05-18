@@ -1,10 +1,5 @@
 local spawnPos = vector3(-31.010, 6316.830, 40.083)
-RegisterCommand('god', function(source, args)
-    -- account for the argument not being passed
-    TriggerEvent('chat:addMessage', {
-		args = { 'modo DIOS activado HERMANO' }
-	})
-end, false)
+
 
 AddEventHandler('onClientGameTypeStart', function()
     -- set an automatic spawn callback for the spawn manager.
