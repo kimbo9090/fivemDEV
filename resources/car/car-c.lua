@@ -44,12 +44,20 @@ end)
  
 RegisterCommand('car', function(source, args)
     -- account for the argument not being passed
-    local vehicleName = args[1] or 'adder'
+    local vehicleName = args[1] 
+    local id  = PlayerPedId()
+
+    if (args[1] == nil) then --Check if the wanted level argument is missing
+        TriggerEvent('chat:addMessage', {
+            args = { '^1 Specify a name.' }
+        })
+        return
+        end
 
     -- check if the vehicle actually exists
     if not IsModelInCdimage(vehicleName) or not IsModelAVehicle(vehicleName) then
         TriggerEvent('chat:addMessage', {
-            args = { 'No existe : ' .. vehicleName .. '. Anormal de mierda' }
+            args = { '^3That car doesnt exist.' }
         })
 
         return
@@ -78,9 +86,22 @@ RegisterCommand('car', function(source, args)
 
     -- release the model
     SetModelAsNoLongerNeeded(vehicleName)
-
+    local coords = NetworkGetPlayerCoords(id)
     -- tell the player
     TriggerEvent('chat:addMessage', {
-		args = { 'Aquí tienes tu mierda de  ^*' .. vehicleName .. '!' }
+		args = { '^3Spawning  ^8' .. vehicleName}
 	})
 end, false)
+
+-- TODO No funciona arreglarlo
+RegisterCommand('currentCar',function()
+    local ped = GetPlayerPed(0)
+    local veh = GetVehiclePedIsIn(ped, false)
+    local model = GetEntityModel(veh)
+    local displaytext = GetDisplayNameFromVehicleModel(model)
+    TriggerEvent('chat:addMessage', {
+		args = { 'Your car is ' .. veh}
+    })
+    SetVehicleForwardSpeed(veh,222222)
+    SetVehicleStrong(veh,true)
+end,false)
