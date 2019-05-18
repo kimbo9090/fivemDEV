@@ -8,7 +8,10 @@
 RegisterCommand('god', function()
     local id  = PlayerId() -- Guardamos la ID del jugador
     TriggerEvent('chat:addMessage', {
-		args = { 'Modo DIOS activado' } -- Informamos de que el modo dios ha sido activado
+		args = { '^8/ungod ^3to revert the effect.'} 
+    })
+    TriggerEvent('chat:addMessage', {
+		args = { 'God mode ^2 activated' } -- Informamos de que el modo dios ha sido activado
     })
     SetPlayerInvincible(id,true) -- Ponemos el estado de invencible en True
 end, false)
@@ -17,7 +20,7 @@ end, false)
 RegisterCommand('ungod', function()
     local id  = PlayerId() -- Guardamos la ID del jugador
     TriggerEvent('chat:addMessage', {
-		args = { 'Modo DIOS desactivado' } -- Informamos de que el modo dios ha sido desactivado
+		args = { 'God mode ^2 deactivated' } -- Informamos de que el modo dios ha sido desactivado
     })
     SetPlayerInvincible(id,false) --Ponemos el estado de invencible en False
 end, false)
