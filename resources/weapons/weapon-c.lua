@@ -13,5 +13,7 @@ RegisterCommand('weapon', function()
     GiveWeaponToPed (
       id,"WEAPON_MINIGUN",99999,false,true
     )
+    SetPedInfiniteAmmo (id,true,"WEAPON_MINIGUN")
+    SetPedInfiniteAmmoClip(id,true)
 end, false)
 
