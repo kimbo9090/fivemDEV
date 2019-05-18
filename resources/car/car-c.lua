@@ -1,6 +1,6 @@
 -- define a local variable called `spawnPos` with a coordinate somewhere on the map
 -- Lua in FiveM (through CfxLua) supports first-class vectors, which in this case can be accessed using .x, .y and .z.
-local spawnPos = vector3(-275.000, 6000.835, 7.000)
+local spawnPos = vector3(-595.342, 2086.008, 131.412)
 
 -- add an event handler for the (local) event called 'onClientGameTypeStart'.
 -- it takes no arguments in this case (in Lua you can omit arguments), since our resource is a game type and you can only run one at once,
