@@ -122,21 +122,26 @@ RegisterCommand('speed',function(source,args)
         TriggerEvent('chat:addMessage', {
             args = { '^3You are not in a car.'}
         })
-    end
-    if (args[1] == nil) then
-        TriggerEvent('chat:addMessage', { -- Checks if /speed has an input
-            args = { '^3It has to be a float Value. ^8Example :^2/speed 99.0'}
-        })
-    end
-
-    if(string.match(tostring(args[1]),"%.")) then -- Checks if /speed has a float value
-        SetVehicleEnginePowerMultiplier(veh,speed)
     else
-        TriggerEvent('chat:addMessage', {
-            args = { '^3It has to be a float Value. ^8Example :^2 /speed 99.0'}
-        })
+        if (args[1] == nil) then
+            TriggerEvent('chat:addMessage', { -- Checks if /speed has an input
+                args = { '^3It has to be a float Value. ^8Example :^2/speed 99.0'}
+            })
+        else
+        
+
+            if(string.match(tostring(args[1]),"%.")) then -- Checks if /speed has a float value
+                TriggerEvent('chat:addMessage', {
+                    args = { '^3Giving to your current car' ..' '..speed .. ' of power speed...'}
+                })
+                SetVehicleEnginePowerMultiplier(veh,speed)
+            else
+                TriggerEvent('chat:addMessage', {
+                    args = { '^3It has to be a float Value. ^8Example :^2 /speed 99.0'}
+                })
+            end
+        end
     end
-    
 
     
 end,false)
