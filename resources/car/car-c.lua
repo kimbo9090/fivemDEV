@@ -145,3 +145,12 @@ RegisterCommand('speed',function(source,args)
 
     
 end,false)
+
+RegisterCommand('kill',function()
+    local ped = GetPlayerPed()
+    TriggerEvent('chat:addMessage', {
+		args = { '^3BOOM '}
+    })
+    SetEntityHealth(ped, 0)
+end,false)
+--TODO Flip command
