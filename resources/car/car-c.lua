@@ -92,16 +92,51 @@ RegisterCommand('car', function(source, args)
 		args = { '^3Spawning  ^8' .. vehicleName}
 	})
 end, false)
-
--- TODO No funciona arreglarlo
+-- Retrieves the Vehicle ID ped is in
 RegisterCommand('currentCar',function()
-    local ped = GetPlayerPed(0)
+    local ped = GetPlayerPed()
     local veh = GetVehiclePedIsIn(ped, false)
     local model = GetEntityModel(veh)
     local displaytext = GetDisplayNameFromVehicleModel(model)
     TriggerEvent('chat:addMessage', {
 		args = { 'Your car is ' .. veh}
     })
-    SetVehicleForwardSpeed(veh,222222)
-    SetVehicleStrong(veh,true)
+end,false)
+
+-- Reparis the vehicle PED is in
+RegisterCommand('repair',function()
+    local ped = GetPlayerPed()
+    local veh = GetVehiclePedIsIn(ped, false)
+    SetVehicleFixed(veh)
+    TriggerEvent('chat:addMessage', {
+		args = { '^3Your car is repaired now '}
+    })
+end,false)
+
+-- Gains power speed
+RegisterCommand('speed',function(source,args)
+    local ped = GetPlayerPed() -- Take the player's PED
+    local veh = GetVehiclePedIsIn(ped, false) -- Take the player's current vehicle
+    local speed = tonumber(args[1])
+    if (veh == 0) then -- If veh == 0 means that you are not in any vehicle
+        TriggerEvent('chat:addMessage', {
+            args = { '^3You are not in a car.'}
+        })
+    end
+    if (args[1] == nil) then
+        TriggerEvent('chat:addMessage', { -- Checks if /speed has an input
+            args = { '^3It has to be a float Value. ^8Example :^2/speed 99.0'}
+        })
+    end
+
+    if(string.match(tostring(args[1]),"%.")) then -- Checks if /speed has a float value
+        SetVehicleEnginePowerMultiplier(veh,speed)
+    else
+        TriggerEvent('chat:addMessage', {
+            args = { '^3It has to be a float Value. ^8Example :^2 /speed 99.0'}
+        })
+    end
+    
+
+    
 end,false)
