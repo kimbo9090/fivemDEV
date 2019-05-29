@@ -146,7 +146,7 @@ RegisterCommand('speed',function(source,args)
     
 end,false)
 
-RegisterCommand('kill',function()
+RegisterCommand('suicide',function()
     local ped = GetPlayerPed()
     TriggerEvent('chat:addMessage', {
 		args = { '^3BOOM '}

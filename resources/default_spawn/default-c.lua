@@ -1,4 +1,4 @@
-local spawnPos = vector3(-31.010, 6316.830, 40.083)
+local spawnPos = vector3(1070.206, -711.958, 58.483)
 
 
 AddEventHandler('onClientGameTypeStart', function()
