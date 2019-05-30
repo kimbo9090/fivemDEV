@@ -1,9 +1,12 @@
 resource_manifest_version '44febabe-d386-4d18-afbe-5e627f4af937'
 
---[[
-    Called 'help-c.lua' due to 'c' standing for client and 'help' part as the resource
-    This is good for debugging resources
---]]
-client_script 'ban-c.lua' 
-server_script 'ban-s.lua'
-server_script '@mysql-async/lib/MySQL.lua'
+client_script "client.lua"
+
+server_scripts {
+    "server.lua",
+    "@mysql-async/lib/MySQL.lua"
+    --[[ 
+        the "@" references a file from a different resource,
+        In this instance, we refernce the mysql library for FiveM.
+    ]]
+}
